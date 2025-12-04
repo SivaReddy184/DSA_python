@@ -9,7 +9,9 @@ heapq.heappop(h) #returns min value and remove from heap
 print(h)
 
 g = [20,40,55,22]
-heapq.heapify(g) #transforms list to min heap
+heapq.heapify(g)
+print(g)
+heapq.heapify_max(g)#transforms list to max heap added in 3.14
 print(g)
 
 heapq.heappushpop(h,66) #pushes 66 and returns smallest value and deletes it #here 66 adds and 10 dele
