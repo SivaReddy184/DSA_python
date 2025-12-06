@@ -9,35 +9,42 @@ def hashing(key):
 def insert(key, value):
     index = hashing(key)
     original_index = index
+    i = 1
     while hash_table[index] is not None and hash_table[index] is not DELETED:
         if hash_table[index][0] == key:
             hash_table[index][1] = value
             return
-        index = (index+1) % table_size
-        if index == original_index:
+        index = (original_index+1 * i) % table_size
+        i = i+1
+        if i == table_size:
             print('Hashtable is Full')
             return
     hash_table[index] = (key, value)
+
 def search(key):
     index = hashing(key)
     original_index = index
+    i = 1
     while hash_table[index] is not None:
         if hash_table[index] is not DELETED and hash_table[index][0] == key:
             return hash_table[index][1]
-        index = (index+1) % table_size
-        if index == original_index:
+        index = (original_index+1 * i) % table_size
+        i = i +1
+        if i == table_size:
             break
     return None
 
 def delete(key):
     index = hashing(key)
     original_index = index
+    i = 1
     while hash_table[index] is not None:
         if hash_table[index] is not DELETED and hash_table[index][0] == key:
             hash_table[index] = DELETED
             return True
-        index = (index+1) % table_size
-        if index == original_index:
+        index = (original_index+1 * 1) % table_size
+        i = i + 1
+        if i == table_size:
             break
     return False
 
